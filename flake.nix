@@ -56,34 +56,13 @@
     ];
   in {
     darwinConfigurations = {
-      personalMacPro = darwin.lib.darwinSystem {
-        inputs = { inherit darwin nixpkgs; };
-        modules = mkNixDarwinModules { user = "jcosta"; } ++ [
-          {
-            networking.computerName = "quartz 💻";
-            networking.hostName = "m13pro";
-            networking.dns = [
-              "8.8.8.8"
-              "1.1.1.1"
-            ];
-            networking.knownNetworkServices = [
-              "Wi-Fi"
-              "USB 10/100/1000 LAN"
-            ];
-          }
-        ];
-      };
 
       workMacPro = darwin.lib.darwinSystem {
         inputs = { inherit darwin nixpkgs; };
-        modules = mkNixDarwinModules { user = "jcosta"; } ++ [
+        modules = mkNixDarwinModules { user = "migmad"; } ++ [
           {
-            networking.computerName = "quartz 💻";
-            networking.hostName = "bp-m16pro";
-            networking.dns = [
-              "8.8.8.8"
-              "1.1.1.1"
-            ];
+            networking.computerName = "vagabond 🥴";
+            networking.hostName = "vagabond";
             networking.knownNetworkServices = [
               "Wi-Fi"
               "USB 10/100/1000 LAN"
@@ -112,7 +91,7 @@
       (import ./overlays)
     ];
 
-    defaultPackage."x86_64-darwin" = self.darwinConfigurations.personalMacPro.system;
+    defaultPackage."x86_64-darwin" = self.darwinConfigurations.workMacPro.system;
 
   } // utils.lib.eachDefaultSystem (system: {
       legacyPackages = import nixpkgs { inherit system; inherit (nixpkgsConfig) config overlays; };

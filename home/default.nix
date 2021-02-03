@@ -25,8 +25,10 @@
     jq
     fzy
     skim
+    cowsay
+    tree
 
-	# compilers/vms/runtimes
+    # compilers/vms/runtimes
     python2Full
     python39
     nodejs_latest
@@ -42,7 +44,7 @@
   ];
 
   home.sessionVariables = {
-    EDITOR = "kak";
+    EDITOR = "vim";
     # PAGER = "col -b -x | kak";
     # MANPAGER = "col -b -x | kak -e 'set buffer filetype man'";
   };
@@ -71,10 +73,22 @@
     vimAlias = true;
     extraConfig = ''
     colorscheme gruvbox
+    set number
+    set relativenumber
     '';
     plugins = with pkgs.vimPlugins; [
       vim-nix
       gruvbox
     ];
+  };
+
+  programs.tmux = {
+    enable = true;
+    clock24 = true;
+    keyMode = "vi"; 
+    historyLimit = 20000;
+    extraConfig = ''
+    set -g mouse on 
+    '';
   };
 }

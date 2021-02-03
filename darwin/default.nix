@@ -4,7 +4,7 @@
   imports = [
     # ./bootstrap.nix
     ./macos.nix
-    ./yabai.nix
+    #./yabai.nix
   ] ++ lib.filter lib.pathExists [ ./private.nix ];
 
   nixpkgs.overlays = [
@@ -30,14 +30,14 @@
     git
     vim
     ssm
-    yabai
-    skhd
+    #yabai
+    #skhd
     comma
   ];
 
-  users.users.jcosta = {
-    home = "/Users/jcosta";
-    description = "João Costa";
+  users.users.migmad = {
+    home = "/Users/migmad";
+    description = "Miguel Madureira";
     shell = pkgs.fish;
     packages = with pkgs; [
       home-manager
@@ -46,7 +46,7 @@
 
   environment.variables = {
     PAGER = "less -R";
-    EDITOR = "kak";
+    EDITOR = "vim";
   };
 
   environment.shellAliases = {
